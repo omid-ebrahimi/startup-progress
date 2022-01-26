@@ -1,0 +1,9 @@
+.container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.text {
+    margin-left: .5rem;
+}

@@ -1,0 +1,19 @@
+.titleContainer {
+    display: flex;
+    align-items: center;
+}
+
+.title {
+    margin-left: 1rem;
+}
+
+.newTaskContainer {
+    display: flex;
+    flex-wrap: nowrap;
+    padding-left: 2rem;
+}
+
+.newTaskInput {
+    width: 90%;
+    max-width: 35rem;
+}
