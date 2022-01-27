@@ -1,16 +1,18 @@
 import React, { useState } from 'react';
 
 import { Badge } from '../../../../components';
-import {useAppDispatch, useAppSelector} from '../../../../app/hooks';
-import {addTask, selectSteps, selectTasks, StepType} from '../../stepsSlice';
+import { useAppDispatch, useAppSelector } from '../../../../app/hooks';
+import { StepStatus, StepType } from '../../types';
+import { addTask, selectSteps, selectTasks } from '../../stepsSlice';
 import { Task } from './Task';
 import styles from './Step.module.css';
 
 interface Props {
   stepId: StepType
+  status: StepStatus
 }
 
-export function Step({ stepId }: Props) {
+export function Step({ stepId, status }: Props) {
   const steps = useAppSelector(selectSteps)
   const tasks = useAppSelector(selectTasks)
   const [text, setText] = useState("")
@@ -21,17 +23,24 @@ export function Step({ stepId }: Props) {
     setText("")
   }
 
+  const isDone = status === StepStatus.Done
+  const isToVerify = status === StepStatus.ToVerify
+  const locked = status === StepStatus.Backlog || status === StepStatus.Done
+
   return (
     <div>
       <div className={styles.titleContainer}>
         <Badge size={40}>{stepId + 1}</Badge>
         <h1 className={styles.title}>{steps[stepId].title}</h1>
+        {(isToVerify || isDone) && <strong className={styles.doneMark}>&nbsp;&nbsp; ✓</strong>}
       </div>
       <div>
-        {steps[stepId].tasks.map((taskId) => <Task task={tasks[taskId]} />)}
+        {steps[stepId].taskIds.map((taskId) => (
+          <Task key={taskId} task={tasks[taskId]} locked={locked} />
+        ))}
         <div className={styles.newTaskContainer}>
-          <input className={styles.newTaskInput} type="text" value={text} onChange={(e) => setText(e.target.value)} />
-          <button onClick={onAddTask}>+</button>
+          <input disabled={isDone} className={styles.newTaskInput} type="text" value={text} onChange={(e) => setText(e.target.value)} />
+          <button disabled={isDone} onClick={onAddTask}>+</button>
         </div>
       </div>
     </div>

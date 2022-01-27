@@ -1,11 +1,12 @@
-import stepsReducer, {addTask, StepType, StepsState, initialState, editTask} from './stepsSlice';
+import { StepsState, StepType } from './types';
+import stepsReducer, { addTask, initialState, editTask } from './stepsSlice';
 
 describe('steps reducer', () => {
   const state: StepsState = {
     steps: {
-      [StepType.Foundation]: { title: "Foundation", tasks: ["xyz"] },
-      [StepType.Discovery]: { title: "Discovery", tasks: [] },
-      [StepType.Delivery]: { title: "Delivery", tasks: [] },
+      [StepType.Foundation]: { title: "Foundation", taskIds: ["xyz"] },
+      [StepType.Discovery]: { title: "Discovery", taskIds: [] },
+      [StepType.Delivery]: { title: "Delivery", taskIds: [] },
     },
     tasks: {
       "xyz": {
@@ -24,7 +25,7 @@ describe('steps reducer', () => {
   it('should handle addTask', () => {
     const actual = stepsReducer(state, addTask({ text: "A new task", stepId: StepType.Discovery }));
 
-    expect(actual.steps[StepType.Discovery].tasks.length).toEqual(1);
+    expect(actual.steps[StepType.Discovery].taskIds.length).toEqual(1);
     expect(Object.keys(actual.tasks).length).toEqual(2);
   });
 

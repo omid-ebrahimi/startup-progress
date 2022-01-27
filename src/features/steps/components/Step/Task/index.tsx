@@ -1,20 +1,22 @@
 import React from 'react';
-import {editTask, Task as TaskType } from '../../../stepsSlice';
+import { editTask } from '../../../stepsSlice';
+import { Task as TaskType } from '../../../types';
+import { useAppDispatch } from "../../../../../app/hooks";
 import { CheckBox } from '../../../../../components/CheckBox';
 import styles from './Task.module.css';
-import {useAppDispatch} from "../../../../../app/hooks";
 
 interface Props {
   task: TaskType
+  locked: boolean
 }
 
-export function Task({ task }: Props) {
+export function Task({ task, locked }: Props) {
   const { text, done } = task
   const dispatch = useAppDispatch()
 
   return (
     <div className={styles.container}>
-      <CheckBox checked={done} onChange={(done) => dispatch(editTask({ ...task, done }))} />
+      <CheckBox disabled={locked} checked={done} onChange={(done) => dispatch(editTask({ ...task, done }))} />
       <strong className={styles.text}>{text}</strong>
     </div>
   );

@@ -1,16 +1,19 @@
 import React from 'react';
 
-import { StepType } from '../stepsSlice';
+import { useAppSelector } from '../../../app/hooks';
+import { StepType } from '../types';
+import { selectStepStatuses } from '../stepsSlice';
 import { Step } from './Step';
 import styles from './Steps.module.css';
 
 export function Steps() {
+  const statuses = useAppSelector(selectStepStatuses)
   return (
     <div className={styles.container}>
       <h1>My Startup Progress</h1>
-      <Step stepId={StepType.Foundation} />
-      <Step stepId={StepType.Discovery} />
-      <Step stepId={StepType.Delivery} />
+      <Step stepId={StepType.Foundation} status={statuses[StepType.Foundation]} />
+      <Step stepId={StepType.Discovery} status={statuses[StepType.Discovery]} />
+      <Step stepId={StepType.Delivery} status={statuses[StepType.Delivery]} />
     </div>
   );
 }

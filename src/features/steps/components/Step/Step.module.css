@@ -1,6 +1,7 @@
 .titleContainer {
     display: flex;
     align-items: center;
+    height: 6rem;
 }
 
 .title {
@@ -16,4 +17,10 @@
 .newTaskInput {
     width: 90%;
     max-width: 35rem;
+}
+
+.doneMark {
+    font-size: 3.5rem;
+    font-weight: bold;
+    justify-self: flex-end;
 }
