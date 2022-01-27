@@ -1,7 +1,7 @@
 import { v4 as uuid } from 'uuid';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from "../../app/store";
-import { StepsState, StepStatus, StepType, Task } from './types';
+import { StepsState, StepStatus, StepType, Task } from './stepsTypes';
 
 export const initialState: StepsState = {
   steps: {

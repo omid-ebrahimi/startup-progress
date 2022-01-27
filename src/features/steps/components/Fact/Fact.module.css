@@ -1,0 +1,15 @@
+.container {
+    display: flex;
+    justify-content: center;
+    margin: 2rem 0;
+}
+
+.text {
+    width: min(50rem, 95%);
+    text-align: center;
+    line-height: 1.5rem;
+    padding: 2rem 2rem;
+    color: forestgreen;
+    background-color: #ddffdd;
+    border-radius: 1rem;
+}

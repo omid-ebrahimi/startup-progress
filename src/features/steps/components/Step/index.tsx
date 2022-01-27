@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import { Badge } from '../../../../components';
 import { useAppDispatch, useAppSelector } from '../../../../app/hooks';
-import { StepStatus, StepType } from '../../types';
+import { StepStatus, StepType } from '../../stepsTypes';
 import { addTask, selectSteps, selectTasks } from '../../stepsSlice';
 import { Task } from './Task';
 import styles from './Step.module.css';

@@ -1,5 +1,5 @@
-import { StepsState, StepType } from './types';
-import stepsReducer, { addTask, initialState, editTask } from './stepsSlice';
+import { StepsState, StepStatus, StepType } from './stepsTypes';
+import stepsReducer, { addTask, initialState, editTask, selectStepStatus } from './stepsSlice';
 
 describe('steps reducer', () => {
   const state: StepsState = {
@@ -36,5 +36,15 @@ describe('steps reducer', () => {
 
     expect(actual.tasks["xyz"].text).toEqual(updatedTask.text);
     expect(actual.tasks["xyz"].done).toEqual(updatedTask.done);
+  });
+
+  it('should select status correctly', () => {
+    const statusFoundation = selectStepStatus(StepType.Foundation)(state)
+    const statusDiscovery = selectStepStatus(StepType.Discovery)(state)
+    const statusDelivery = selectStepStatus(StepType.Delivery)(state)
+
+    expect(statusFoundation).toEqual(StepStatus.Todo);
+    expect(statusDiscovery).toEqual(StepStatus.Backlog);
+    expect(statusDelivery).toEqual(StepStatus.Backlog);
   });
 });

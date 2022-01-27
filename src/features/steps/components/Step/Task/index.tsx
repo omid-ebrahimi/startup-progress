@@ -1,6 +1,6 @@
 import React from 'react';
 import { editTask } from '../../../stepsSlice';
-import { Task as TaskType } from '../../../types';
+import { Task as TaskType } from '../../../stepsTypes';
 import { useAppDispatch } from "../../../../../app/hooks";
 import { CheckBox } from '../../../../../components/CheckBox';
 import styles from './Task.module.css';

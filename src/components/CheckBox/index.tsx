@@ -9,7 +9,7 @@ interface Props {
 
 export function CheckBox({ checked, onChange, disabled }: Props) {
   const toggle = () => !disabled && onChange(!checked)
-  const backgroundColor = disabled ? "gray" : "blueviolet"
+  const backgroundColor = disabled ? "lightgray" : "blueviolet"
   return (
     <div className={styles.container} style={{ backgroundColor }} onClick={toggle}>
       {checked && <strong>✓</strong>}

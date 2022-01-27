@@ -1,4 +1,5 @@
 export async function fetchFact(): Promise<string> {
-  // fetch a fact from https://uselessfacts.jsph.pl/random.json
-  return "Not Implemented!"
+  const response = await fetch("https://uselessfacts.jsph.pl/random.json")
+  const fact = await response.json()
+  return fact.text;
 }
