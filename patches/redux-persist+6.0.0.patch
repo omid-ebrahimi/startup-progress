@@ -1,0 +1,26 @@
+diff --git a/node_modules/redux-persist/src/persistReducer.js b/node_modules/redux-persist/src/persistReducer.js
+index cf8d980..04574ae 100644
+--- a/node_modules/redux-persist/src/persistReducer.js
++++ b/node_modules/redux-persist/src/persistReducer.js
+@@ -20,7 +20,7 @@ import createPersistoid from './createPersistoid'
+ import defaultGetStoredState from './getStoredState'
+ import purgeStoredState from './purgeStoredState'
+ 
+-type PersistPartial = { _persist: PersistState }
++type PersistPartial = { _persist?: PersistState }
+ const DEFAULT_TIMEOUT = 5000
+ /*
+   @TODO add validation / handling for:
+diff --git a/node_modules/redux-persist/types/persistReducer.d.ts b/node_modules/redux-persist/types/persistReducer.d.ts
+index d56b212..ff7e877 100644
+--- a/node_modules/redux-persist/types/persistReducer.d.ts
++++ b/node_modules/redux-persist/types/persistReducer.d.ts
+@@ -3,7 +3,7 @@ declare module "redux-persist/es/persistReducer" {
+   import { PersistState, PersistConfig } from "redux-persist/es/types";
+ 
+   interface PersistPartial {
+-    _persist: PersistState;
++    _persist?: PersistState;
+   }
+ 
+   /**
